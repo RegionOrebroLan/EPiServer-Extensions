@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<languages>
+	<language id="sv" name="svenska">
+		<contenttypes>
+			<filelistblock>
+				<description></description>
+				<name>Fil-listnings block</name>
+			</filelistblock>
+			<filetreeblock>
+				<description></description>
+				<name>Fil-träds block</name>
+			</filetreeblock>
+			<icontentdata>
+				<properties>
+					<depth>
+						<caption>Djup</caption>
+						<help>Antal nivåer att iterera hierarkiskt.</help>
+					</depth>
+					<excluderoots>
+						<caption>Exkludera root-behållare</caption>
+						<help></help>
+					</excluderoots>
+					<heading>
+						<caption>Rubrik</caption>
+						<help></help>
+					</heading>
+					<ignoreduplicates>
+						<caption>Tillåt dubletter</caption>
+						<help></help>
+					</ignoreduplicates>
+					<includeroots>
+						<caption>Inkludera root-behållare</caption>
+						<help></help>
+					</includeroots>
+					<maximumnumberofitems>
+						<caption>Maximalt antal poster</caption>
+						<help></help>
+					</maximumnumberofitems>
+					<pagination>
+						<caption>Paginering</caption>
+						<help></help>
+					</pagination>
+					<roots>
+						<caption>Root-behållare</caption>
+						<help></help>
+					</roots>
+					<sortorder>
+						<caption>Sortering</caption>
+						<help></help>
+					</sortorder>
+				</properties>
+			</icontentdata>
+			<pagelistblock>
+				<description></description>
+				<name>Sid-listnings block</name>
+			</pagelistblock>
+			<pagetreeblock>
+				<description></description>
+				<name>Sid-träds block</name>
+			</pagetreeblock>
+			<paginationsettingsblock>
+				<description>Vid bläddring visas bara ett antal poster åt gången. Antalet avgörs av värdet på "Antal poster per sida".</description>
+				<name>Bläddring</name>
+				<properties>
+					<mode>
+						<caption>Läge</caption>
+						<help>Upptill, nertill, både och eller inaktiverad.</help>
+					</mode>
+					<maximumnumberofdisplayedpages>
+						<caption>Antal sidor åt gången</caption>
+						<help>Maximalt antal paginering-sidor som visas åt gången. Om inget, noll, eller ett negativt, värde anges, visas 10 sidor.</help>
+					</maximumnumberofdisplayedpages>
+					<pagesize>
+						<caption>Antal poster per sida</caption>
+						<help>Antal poster som ska visas per sida vid bläddring. Om inget, noll, eller ett negativt, värde anges, visas 10 poster.</help>
+					</pagesize>
+				</properties>
+			</paginationsettingsblock>
+		</contenttypes>
+		<system>
+			<editutil>
+				<paginationmodes>
+					<bottom>Nertill</bottom>
+					<top>Upptill</top>
+				</paginationmodes>
+			</editutil>
+		</system>
+	</language>
+</languages>

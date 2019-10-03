@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<languages>
+	<language id="en" name="English">
+		<contenttypes>
+			<filelistblock>
+				<description></description>
+				<name>File-list block</name>
+			</filelistblock>
+			<filetreeblock>
+				<description></description>
+				<name>File-tree block</name>
+			</filetreeblock>
+			<icontentdata>
+				<properties>
+					<depth>
+						<caption>Depth</caption>
+						<help>Number of levels to iterate hierarchically.</help>
+					</depth>
+					<excluderoots>
+						<caption>Exclude root-container</caption>
+						<help></help>
+					</excluderoots>
+					<heading>
+						<caption>Heading</caption>
+						<help></help>
+					</heading>
+					<ignoreduplicates>
+						<caption>Allow duplicates</caption>
+						<help></help>
+					</ignoreduplicates>
+					<includeroots>
+						<caption>Include root-container</caption>
+						<help></help>
+					</includeroots>
+					<maximumnumberofitems>
+						<caption>Maximum number of items</caption>
+						<help></help>
+					</maximumnumberofitems>
+					<pagination>
+						<caption>Pagination</caption>
+						<help></help>
+					</pagination>
+					<roots>
+						<caption>Root-containers</caption>
+						<help></help>
+					</roots>
+					<sortorder>
+						<caption>Sorting</caption>
+						<help></help>
+					</sortorder>
+				</properties>
+			</icontentdata>
+			<pagelistblock>
+				<description></description>
+				<name>Page-list block</name>
+			</pagelistblock>
+			<pagetreeblock>
+				<description></description>
+				<name>Page-tree block</name>
+			</pagetreeblock>
+			<paginationsettingsblock>
+				<description>When paging, only a few entries are displayed at a time. The number is determined by the value of "Number of items per page".</description>
+				<name>Pagination</name>
+				<properties>
+					<mode>
+						<caption>Location</caption>
+						<help>At the top, at the bottom, both or disabled.</help>
+					</mode>
+					<maximumnumberofdisplayedpages>
+						<caption>Number of pages at a time</caption>
+						<help>Maximum number of pagination-pages displayed at a time. If no, zero, or negative value is entered, 10 pages are displayed.</help>
+					</maximumnumberofdisplayedpages>
+					<pagesize>
+						<caption>Number of items per page</caption>
+						<help>Number of items to display per page when paging. If no, zero, or a negative value is entered, 10 entries are displayed.</help>
+					</pagesize>
+				</properties>
+			</paginationsettingsblock>
+		</contenttypes>
+		<system>
+			<editutil>
+				<paginationmodes>
+					<bottom>At the bottom</bottom>
+					<top>At the top</top>
+				</paginationmodes>
+			</editutil>
+		</system>
+	</language>
+</languages>

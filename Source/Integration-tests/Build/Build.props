@@ -1,0 +1,13 @@
+<Project>
+	<PropertyGroup>
+		<AssemblyName>RegionOrebroLan.EPiServer.IntegrationTests</AssemblyName>
+		<AssemblyOriginatorKeyFile>$(SolutionDir).Global\Signing\StrongName.Development.snk</AssemblyOriginatorKeyFile>
+		<CodeAnalysisRuleSet>CodeAnalysis\Rules.ruleset</CodeAnalysisRuleSet>
+		<PackagesDirectory Condition="$(PackagesDirectory) == ''">$(SolutionDir)packages\</PackagesDirectory>
+	</PropertyGroup>
+	<ItemDefinitionGroup>
+		<FileToCopy>
+			<CopyAlways>false</CopyAlways>
+		</FileToCopy>
+	</ItemDefinitionGroup>
+</Project>

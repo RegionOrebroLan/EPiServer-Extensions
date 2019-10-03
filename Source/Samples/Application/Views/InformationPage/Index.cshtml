@@ -1,0 +1,12 @@
+@model IPageViewModel<InformationPage>
+<h1>
+	@if(string.IsNullOrEmpty(Model.Page.Heading))
+	{
+		@Html.PropertyFor(model => model.Page.Name)
+	}
+	else
+	{
+		@Html.PropertyFor(model => model.Page.Heading)
+	}
+</h1>
+@Html.XhtmlString(Model.Page.MainBody)
