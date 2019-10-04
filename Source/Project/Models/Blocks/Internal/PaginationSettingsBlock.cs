@@ -10,7 +10,7 @@ using RegionOrebroLan.EPiServer.Web.Paging;
 namespace RegionOrebroLan.EPiServer.Models.Blocks.Internal
 {
 	[ContentType(AvailableInEditMode = false, GUID = "f1c0ec24-8f61-4844-bcb2-66db40b938b1", Order = 1000)]
-	public class PaginationSettingsBlock : BasicBlock
+	public class PaginationSettingsBlock : BasicBlock, IPaginationSettings
 	{
 		#region Constructors
 
