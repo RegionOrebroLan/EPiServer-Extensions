@@ -7,7 +7,7 @@
 		<PackageReference Include="EPiServer.CMS.AspNet" Version="11.10.1" />
 		<PackageReference Include="EPiServer.CMS.Core" Version="11.10.1" />
 		<PackageReference Include="EPiServer.CMS.UI.Core" Version="11.10.0" />
-		<PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.4">
+		<PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="RegionOrebroLan" Version="1.0.6" />
