@@ -83,7 +83,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 			return this.Create(this.GetContents<T>(roots, settings), settings);
 		}
 
-		protected internal virtual IEnumerable<T> Filter<T>(IEnumerable<T> contents, ICollectionSettings settings) where T : IContent
+		protected internal virtual IEnumerable<T> Filter<T>(IEnumerable<T> contents, IListSettings settings) where T : IContent
 		{
 			var filter = new CompositeFilter(settings?.Filters ?? Enumerable.Empty<IContentFilter>());
 
