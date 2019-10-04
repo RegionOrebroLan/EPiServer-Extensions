@@ -62,7 +62,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 
 		protected internal virtual IContentList<T> Create<T>(IEnumerable<T> contents, IListSettings settings) where T : IContent
 		{
-			contents = contents.Filter(settings).Sort(settings).Take(settings?.MaximumNumberOfItems ?? int.MaxValue).ToArray();
+			contents = contents.DuplicateHandled(settings).Filter(settings).Sort(settings).Take(settings?.MaximumNumberOfItems ?? int.MaxValue).ToArray();
 
 			var pagination = this.PaginationFactory.Create(settings?.Pagination?.MaximumNumberOfDisplayedPages ?? this.DefaultMaximumNumberOfDisplayedPages, contents.Count(), this.GetPageIndexKey(settings), settings?.Pagination?.PageSize ?? this.DefaultPageSize, this.GetUrl());
 
@@ -94,7 +94,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 
 		protected internal virtual IEnumerable<T> GetContents<T>(IEnumerable<ContentReference> roots, IListSettings settings) where T : IContent
 		{
-			return (roots ?? Enumerable.Empty<ContentReference>()).SelectMany(root => this.GetContents<T>(root, settings));
+			return this.DuplicateHandledRoots(roots, settings).SelectMany(root => this.GetContents<T>(root, settings));
 		}
 
 		protected internal virtual int GetDepth(IListSettings settings)

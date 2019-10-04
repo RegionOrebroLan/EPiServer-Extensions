@@ -11,6 +11,18 @@ namespace RegionOrebroLan.EPiServer.Collections.Extensions
 	{
 		#region Methods
 
+		public static IEnumerable<T> DuplicateHandled<T>(this IEnumerable<T> contents, ICollectionSettings settings) where T : IContent
+		{
+			if(contents == null)
+				throw new ArgumentNullException(nameof(contents));
+
+			// Guess this is enough because content comes from the cache and there is reference-equality.
+			return !(settings?.IgnoreDuplicates ?? false) ? contents.Distinct() : contents;
+
+			// If it is not enough then we can use this:
+			//return !(settings?.IgnoreDuplicates ?? false) ? contents.GroupBy(content => content.ContentLink).Select(grouping => grouping.First()) : contents;
+		}
+
 		public static IEnumerable<T> Filter<T>(this IEnumerable<T> contents, ICollectionSettings settings) where T : IContent
 		{
 			if(contents == null)

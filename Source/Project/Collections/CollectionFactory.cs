@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using EPiServer;
+using EPiServer.Core;
 using EPiServer.Logging;
 using RegionOrebroLan.EPiServer.Filters;
 using RegionOrebroLan.EPiServer.Web.Routing;
@@ -28,6 +31,15 @@ namespace RegionOrebroLan.EPiServer.Collections
 		protected internal virtual IFilterFacade Filters { get; }
 		protected internal ILogger Logger { get; }
 		protected internal ILoggerFactory LoggerFactory { get; }
+
+		#endregion
+
+		#region Methods
+
+		protected internal virtual IEnumerable<ContentReference> DuplicateHandledRoots(IEnumerable<ContentReference> roots, ICollectionSettings settings)
+		{
+			return roots == null ? Enumerable.Empty<ContentReference>() : !(settings?.IgnoreDuplicates ?? false) ? roots.Distinct(ContentReferenceComparer.Default) : roots;
+		}
 
 		#endregion
 	}

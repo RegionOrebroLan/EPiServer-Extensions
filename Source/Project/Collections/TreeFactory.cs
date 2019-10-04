@@ -78,7 +78,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 			if(settings == null)
 				throw new ArgumentNullException(nameof(settings));
 
-			foreach(var root in roots ?? Enumerable.Empty<ContentReference>())
+			foreach(var root in this.DuplicateHandledRoots(roots, settings))
 			{
 				yield return this.Create<T>(root, settings);
 			}
