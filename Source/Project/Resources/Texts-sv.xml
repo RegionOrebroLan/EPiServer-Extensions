@@ -4,11 +4,11 @@
 		<contenttypes>
 			<filelistblock>
 				<description></description>
-				<name>Fil-listnings block</name>
+				<name>Fillista</name>
 			</filelistblock>
 			<filetreeblock>
 				<description></description>
-				<name>Fil-träds block</name>
+				<name>Filträd</name>
 			</filetreeblock>
 			<icontentdata>
 				<properties>
@@ -52,11 +52,11 @@
 			</icontentdata>
 			<pagelistblock>
 				<description></description>
-				<name>Sid-listnings block</name>
+				<name>Sidlista</name>
 			</pagelistblock>
 			<pagetreeblock>
 				<description></description>
-				<name>Sid-träds block</name>
+				<name>Sidträd</name>
 			</pagetreeblock>
 			<paginationsettingsblock>
 				<description>Vid bläddring visas bara ett antal poster åt gången. Antalet avgörs av värdet på "Antal poster per sida".</description>

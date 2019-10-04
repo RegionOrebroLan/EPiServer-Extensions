@@ -4,11 +4,11 @@
 		<contenttypes>
 			<filelistblock>
 				<description></description>
-				<name>File-list block</name>
+				<name>Filelist</name>
 			</filelistblock>
 			<filetreeblock>
 				<description></description>
-				<name>File-tree block</name>
+				<name>Filetree</name>
 			</filetreeblock>
 			<icontentdata>
 				<properties>
@@ -52,11 +52,11 @@
 			</icontentdata>
 			<pagelistblock>
 				<description></description>
-				<name>Page-list block</name>
+				<name>Pagelist</name>
 			</pagelistblock>
 			<pagetreeblock>
 				<description></description>
-				<name>Page-tree block</name>
+				<name>Pagetree</name>
 			</pagetreeblock>
 			<paginationsettingsblock>
 				<description>When paging, only a few entries are displayed at a time. The number is determined by the value of "Number of items per page".</description>
