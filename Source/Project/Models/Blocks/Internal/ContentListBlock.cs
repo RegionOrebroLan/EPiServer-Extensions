@@ -7,9 +7,6 @@ namespace RegionOrebroLan.EPiServer.Models.Blocks.Internal
 	{
 		#region Properties
 
-		[Display(GroupName = SystemTabNames.Settings, Order = 60)]
-		public virtual bool IgnoreDuplicates { get; set; }
-
 		[Display(GroupName = SystemTabNames.Settings, Order = 50)]
 		public virtual int? MaximumNumberOfItems { get; set; }
 

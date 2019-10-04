@@ -16,6 +16,9 @@ namespace RegionOrebroLan.EPiServer.Models.Blocks.Internal
 		[Display(GroupName = SystemTabNames.Content, Order = 10)]
 		public virtual string Heading { get; set; }
 
+		[Display(GroupName = SystemTabNames.Settings, Order = 60)]
+		public virtual bool IgnoreDuplicates { get; set; }
+
 		#endregion
 	}
 }
