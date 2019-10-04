@@ -11,6 +11,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 		IList<IComparer<IContent>> Comparers { get; }
 		int? Depth { get; }
 		IList<IContentFilter> Filters { get; }
+		bool IgnoreDuplicates { get; }
 		bool IncludeRoot { get; }
 
 		#endregion

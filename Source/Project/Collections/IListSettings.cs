@@ -8,7 +8,6 @@ namespace RegionOrebroLan.EPiServer.Collections
 		#region Properties
 
 		ContentReference ContentLink { get; }
-		bool IgnoreDuplicates { get; }
 		int? MaximumNumberOfItems { get; }
 		IPaginationSettings Pagination { get; }
 
