@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using EPiServer.Core;
+using RegionOrebroLan.Collections.Generic;
+using RegionOrebroLan.EPiServer.Filters;
+
+namespace RegionOrebroLan.EPiServer.Collections.Extensions
+{
+	public static class EnumerableContentExtension
+	{
+		#region Methods
+
+		public static IEnumerable<T> Filter<T>(this IEnumerable<T> contents, ICollectionSettings settings) where T : IContent
+		{
+			if(contents == null)
+				throw new ArgumentNullException(nameof(contents));
+
+			// ReSharper disable InvertIf
+			if(settings?.Filters != null && settings.Filters.Any())
+			{
+				var filter = new CompositeFilter(settings.Filters);
+
+				contents = contents.Where(content => !filter.ShouldFilter(content));
+			}
+			// ReSharper restore InvertIf
+
+			return contents;
+		}
+
+		public static IEnumerable<T> Sort<T>(this IEnumerable<T> contents, ICollectionSettings settings) where T : IContent
+		{
+			if(contents == null)
+				throw new ArgumentNullException(nameof(contents));
+
+			// ReSharper disable InvertIf
+			if(settings?.Comparers != null && settings.Comparers.Any())
+			{
+				var comparer = new CompositeComparer<IContent>(settings.Comparers);
+
+				contents = contents.OrderBy(content => content, comparer);
+			}
+			// ReSharper restore InvertIf
+
+			return contents;
+		}
+
+		#endregion
+	}
+}

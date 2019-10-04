@@ -4,10 +4,9 @@ using System.Globalization;
 using System.Linq;
 using EPiServer;
 using EPiServer.Core;
-using EPiServer.Filters;
 using EPiServer.Logging;
 using EPiServer.ServiceLocation;
-using RegionOrebroLan.Collections.Generic;
+using RegionOrebroLan.EPiServer.Collections.Extensions;
 using RegionOrebroLan.EPiServer.Filters;
 using RegionOrebroLan.EPiServer.Web;
 using RegionOrebroLan.EPiServer.Web.Routing;
@@ -63,7 +62,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 
 		protected internal virtual IContentList<T> Create<T>(IEnumerable<T> contents, IListSettings settings) where T : IContent
 		{
-			contents = this.Sort(this.Filter(contents ?? Enumerable.Empty<T>(), settings), settings).Take(settings?.MaximumNumberOfItems ?? int.MaxValue).ToArray();
+			contents = contents.Filter(settings).Sort(settings).Take(settings?.MaximumNumberOfItems ?? int.MaxValue).ToArray();
 
 			var pagination = this.PaginationFactory.Create(settings?.Pagination?.MaximumNumberOfDisplayedPages ?? this.DefaultMaximumNumberOfDisplayedPages, contents.Count(), this.GetPageIndexKey(settings), settings?.Pagination?.PageSize ?? this.DefaultPageSize, this.GetUrl());
 
@@ -81,13 +80,6 @@ namespace RegionOrebroLan.EPiServer.Collections
 				throw new ArgumentNullException(nameof(settings));
 
 			return this.Create(this.GetContents<T>(roots, settings), settings);
-		}
-
-		protected internal virtual IEnumerable<T> Filter<T>(IEnumerable<T> contents, IListSettings settings) where T : IContent
-		{
-			var filter = new CompositeFilter(settings?.Filters ?? Enumerable.Empty<IContentFilter>());
-
-			return (contents ?? Enumerable.Empty<T>()).Where(content => !filter.ShouldFilter(content));
 		}
 
 		protected internal virtual IEnumerable<T> GetContents<T>(ContentReference root, IListSettings settings) where T : IContent
@@ -162,13 +154,6 @@ namespace RegionOrebroLan.EPiServer.Collections
 				url = new Uri("http://localhost/");
 
 			return url;
-		}
-
-		protected internal virtual IEnumerable<T> Sort<T>(IEnumerable<T> contents, ICollectionSettings settings) where T : IContent
-		{
-			var comparer = new CompositeComparer<IContent>(settings?.Comparers ?? Enumerable.Empty<IComparer<IContent>>());
-
-			return (contents ?? Enumerable.Empty<T>()).OrderBy(content => content, comparer);
 		}
 
 		#endregion

@@ -4,11 +4,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using EPiServer;
 using EPiServer.Core;
-using EPiServer.Filters;
 using EPiServer.Logging;
-using RegionOrebroLan.Collections.Generic;
 using RegionOrebroLan.EPiServer.Collections.Extensions;
-using RegionOrebroLan.EPiServer.Filters;
 
 namespace RegionOrebroLan.EPiServer.Collections
 {
@@ -18,8 +15,6 @@ namespace RegionOrebroLan.EPiServer.Collections
 
 		private IEnumerable<IContentNode<T>> _children;
 		private IEnumerable<T> _childrenInternal;
-		private IComparer<IContent> _comparer;
-		private IContentFilter _filter;
 
 		#endregion
 
@@ -86,7 +81,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 					var childrenInternal = new List<T>();
 
 					if(!ContentReference.IsNullOrEmpty(this.ContentLink) && (this.Settings.Depth == null || this.Settings.Depth.Value > this.Level()))
-						childrenInternal.AddRange(this.ContentLoader.GetChildren<T>(this.ContentLink).Where(item => !this.Filter.ShouldFilter(item)).OrderBy(content => content, this.Comparer));
+						childrenInternal.AddRange(this.ContentLoader.GetChildren<T>(this.ContentLink).Filter(this.Settings).Sort(this.Settings));
 
 					this._childrenInternal = childrenInternal.ToArray();
 				}
@@ -96,14 +91,11 @@ namespace RegionOrebroLan.EPiServer.Collections
 			}
 		}
 
-		protected internal virtual IComparer<IContent> Comparer => this._comparer ?? (this._comparer = new CompositeComparer<IContent>(this.Settings.Comparers));
-
 		[SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code")]
 		protected internal virtual ContentReference ContentLink => this.Value?.ContentLink;
 
 		protected internal virtual IContentLoader ContentLoader { get; }
 		protected internal virtual bool Expand => this.Settings.ExpandAll || this.Settings.Expanded.Contains(this.ContentLink, ContentReferenceComparer.IgnoreVersion);
-		protected internal virtual IContentFilter Filter => this._filter ?? (this._filter = new CompositeFilter(this.Settings.Filters));
 		public virtual bool Leaf => !this.ChildrenInternal.Any();
 		protected internal virtual ILogger Logger { get; }
 		IContentNode IContentNode.Parent => this.Parent;
