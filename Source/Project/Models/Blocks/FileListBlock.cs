@@ -12,7 +12,7 @@ using RegionOrebroLan.EPiServer.Models.Blocks.Internal;
 
 namespace RegionOrebroLan.EPiServer.Models.Blocks
 {
-	[ContentType(GUID = "2b49d59f-f9e3-43b4-b7bc-e45a3b72776e")]
+	[ContentType(GUID = "2b49d59f-f9e3-43b4-b7bc-e45a3b72776e", Order = 1001)]
 	public class FileListBlock : ContentListBlock
 	{
 		#region Properties
