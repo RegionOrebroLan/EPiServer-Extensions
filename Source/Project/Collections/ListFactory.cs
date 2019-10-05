@@ -9,6 +9,7 @@ using EPiServer.ServiceLocation;
 using RegionOrebroLan.EPiServer.Collections.Extensions;
 using RegionOrebroLan.EPiServer.Filters;
 using RegionOrebroLan.EPiServer.Web;
+using RegionOrebroLan.EPiServer.Web.Paging;
 using RegionOrebroLan.EPiServer.Web.Routing;
 using RegionOrebroLan.Web.Paging;
 
@@ -64,7 +65,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 		{
 			contents = contents.DuplicateHandled(settings).Filter(settings).Sort(settings).Take(settings?.MaximumNumberOfItems ?? int.MaxValue).ToArray();
 
-			var pagination = this.PaginationFactory.Create(settings?.Pagination?.MaximumNumberOfDisplayedPages ?? this.DefaultMaximumNumberOfDisplayedPages, contents.Count(), this.GetPageIndexKey(settings), settings?.Pagination?.PageSize ?? this.DefaultPageSize, this.GetUrl());
+			var pagination = this.PaginationFactory.Create(settings?.Pagination?.MaximumNumberOfDisplayedPages ?? this.DefaultMaximumNumberOfDisplayedPages, contents.Count(), this.GetPageIndexKey(settings), this.GetPageSize(settings), this.GetUrl());
 
 			return new ContentList<T>(contents.Skip(pagination.Skip).Take(pagination.Take), pagination);
 		}
@@ -144,6 +145,11 @@ namespace RegionOrebroLan.EPiServer.Collections
 				parts.Add(key);
 
 			return string.Join(separator.ToString(CultureInfo.InvariantCulture), parts);
+		}
+
+		protected internal virtual int GetPageSize(IListSettings settings)
+		{
+			return (settings?.Pagination?.Mode ?? PaginationModes.None) == PaginationModes.None ? int.MaxValue : settings?.Pagination?.PageSize ?? this.DefaultPageSize;
 		}
 
 		protected internal virtual Uri GetUrl()
