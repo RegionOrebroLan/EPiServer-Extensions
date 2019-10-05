@@ -1,5 +1,4 @@
-﻿using EPiServer.Core;
-using RegionOrebroLan.EPiServer.Web.Paging;
+﻿using RegionOrebroLan.EPiServer.Web.Paging;
 
 namespace RegionOrebroLan.EPiServer.Collections
 {
@@ -7,7 +6,6 @@ namespace RegionOrebroLan.EPiServer.Collections
 	{
 		#region Properties
 
-		ContentReference ContentLink { get; }
 		int? MaximumNumberOfItems { get; }
 		IPaginationSettings Pagination { get; }
 

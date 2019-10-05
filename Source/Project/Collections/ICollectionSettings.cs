@@ -9,6 +9,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 		#region Properties
 
 		IList<IComparer<IContent>> Comparers { get; }
+		ContentReference ContentLink { get; }
 		int? Depth { get; }
 		IList<IContentFilter> Filters { get; }
 		bool IgnoreDuplicates { get; }
