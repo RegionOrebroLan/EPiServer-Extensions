@@ -8,7 +8,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 		#region Properties
 
 		public virtual bool ExpandAll { get; set; }
-		public virtual IList<ContentReference> Expanded { get; } = new List<ContentReference>();
+		public virtual ISet<ContentReference> Expanded { get; } = new HashSet<ContentReference>(ContentReferenceComparer.IgnoreVersion);
 		public virtual bool IndicateActiveContent { get; set; }
 
 		#endregion

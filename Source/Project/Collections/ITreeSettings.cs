@@ -8,7 +8,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 		#region Properties
 
 		bool ExpandAll { get; }
-		IList<ContentReference> Expanded { get; }
+		ISet<ContentReference> Expanded { get; }
 		bool IndicateActiveContent { get; }
 
 		#endregion

@@ -95,7 +95,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 		protected internal virtual ContentReference ContentLink => this.Value?.ContentLink;
 
 		protected internal virtual IContentLoader ContentLoader { get; }
-		protected internal virtual bool Expand => this.Settings.ExpandAll || this.Settings.Expanded.Contains(this.ContentLink, ContentReferenceComparer.IgnoreVersion);
+		protected internal virtual bool Expand => this.Settings.ExpandAll || this.Settings.Expanded.Contains(this.ContentLink);
 		public virtual bool Leaf => !this.ChildrenInternal.Any();
 		protected internal virtual ILogger Logger { get; }
 		IContentNode IContentNode.Parent => this.Parent;
