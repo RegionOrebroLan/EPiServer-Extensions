@@ -14,38 +14,102 @@ namespace RegionOrebroLan.EPiServer.IntegrationTests.Collections
 		#region Methods
 
 		[TestMethod]
-		public void Create_Test1()
+		public void Create_IfIncludeRootsIsSetToTrue_ShouldReturnAResultWithTheRootIncluded()
 		{
 			var listSettings = new ListSettings
 			{
-				Depth = int.MaxValue,
 				IncludeRoot = true
 			};
 
-			var listFactory = this.GetListFactory();
-
-			var contentList = listFactory.Create(ContentReference.RootPage, listSettings);
-
-			Assert.AreEqual(10, contentList.Items.Count());
-			Assert.AreEqual(4, contentList.Pagination.TotalNumberOfPages);
+			Assert.AreEqual(5, this.GetListFactory().Create(ContentReference.RootPage, listSettings).Items.Count());
 		}
 
 		[TestMethod]
-		public void Create_Test2()
+		public void Create_IfThePaginationModeIsNone_ShouldReturnAResultWithAllItems()
 		{
 			var listSettings = new ListSettings
 			{
 				Depth = int.MaxValue,
-				IncludeRoot = true,
-				Pagination = this.CreatePaginationSettings(int.MaxValue, PaginationModes.None, int.MaxValue)
+				Pagination = this.CreatePaginationSettings(null, PaginationModes.None, null)
 			};
 
-			var listFactory = this.GetListFactory();
-
-			var contentList = listFactory.Create(ContentReference.RootPage, listSettings);
-
-			Assert.AreEqual(33, contentList.Items.Count());
+			Assert.AreEqual(32, this.GetListFactory().Create(ContentReference.RootPage, listSettings).Items.Count());
 		}
+
+		[TestMethod]
+		public void Create_IfThePaginationModeIsNone_ShouldReturnAResultWithAPaginationWithoutPages()
+		{
+			var listSettings = new ListSettings
+			{
+				Depth = int.MaxValue,
+				Pagination = this.CreatePaginationSettings(null, PaginationModes.None, null)
+			};
+
+			var pagination = this.GetListFactory().Create(ContentReference.RootPage, listSettings).Pagination;
+
+			Assert.IsFalse(pagination.Pages.Any());
+		}
+
+		[TestMethod]
+		public void Create_IfTheRootsParameterContainsDuplicates_AndIgnoreDuplicatesIsFalse_ShouldReturnAResultWithoutDuplicates()
+		{
+			var listSettings = new ListSettings
+			{
+				IgnoreDuplicates = false
+			};
+
+			var root = ContentReference.RootPage;
+
+			Assert.AreEqual(4, this.GetListFactory().Create(new[] {root, root, root}, listSettings).Items.Count());
+		}
+
+		[TestMethod]
+		public void Create_IfTheRootsParameterContainsDuplicates_AndIgnoreDuplicatesIsTrue_ShouldReturnAResultWithDuplicates()
+		{
+			var listSettings = new ListSettings
+			{
+				IgnoreDuplicates = true,
+				Pagination = this.CreatePaginationSettings(null, PaginationModes.Bottom, int.MaxValue)
+			};
+
+			var root = ContentReference.RootPage;
+
+			Assert.AreEqual(12, this.GetListFactory().Create(new[] {root, root, root}, listSettings).Items.Count());
+		}
+
+		//[TestMethod]
+		//public void Create_Test1()
+		//{
+		//	var listSettings = new ListSettings
+		//	{
+		//		Depth = int.MaxValue,
+		//		IncludeRoot = true
+		//	};
+
+		//	var listFactory = this.GetListFactory();
+
+		//	var contentList = listFactory.Create(ContentReference.RootPage, listSettings);
+
+		//	Assert.AreEqual(10, contentList.Items.Count());
+		//	Assert.AreEqual(4, contentList.Pagination.TotalNumberOfPages);
+		//}
+
+		//[TestMethod]
+		//public void Create_Test2()
+		//{
+		//	var listSettings = new ListSettings
+		//	{
+		//		Depth = int.MaxValue,
+		//		IncludeRoot = true,
+		//		Pagination = this.CreatePaginationSettings(int.MaxValue, PaginationModes.None, int.MaxValue)
+		//	};
+
+		//	var listFactory = this.GetListFactory();
+
+		//	var contentList = listFactory.Create(ContentReference.RootPage, listSettings);
+
+		//	Assert.AreEqual(33, contentList.Items.Count());
+		//}
 
 		protected internal virtual IPaginationSettings CreatePaginationSettings(int? maximumNumberOfDisplayedPages, PaginationModes mode, int? pageSize)
 		{
