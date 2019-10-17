@@ -10,6 +10,12 @@ namespace RegionOrebroLan.EPiServer.Collections
 		bool Active { get; }
 		bool ActiveAncestor { get; }
 		IEnumerable<IContentNode> Children { get; }
+
+		/// <summary>
+		/// The content-link without version information.
+		/// </summary>
+		ContentReference ContentLink { get; }
+
 		bool Leaf { get; }
 		IContentNode Parent { get; }
 		IContent Value { get; }
@@ -17,6 +23,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 		#endregion
 	}
 
+	/// <inheritdoc />
 	public interface IContentNode<out T> : IContentNode where T : IContent
 	{
 		#region Properties

@@ -2,6 +2,7 @@
 
 namespace RegionOrebroLan.EPiServer.Collections
 {
+	/// <inheritdoc />
 	public interface IContentRoot : IContentNode
 	{
 		#region Properties
@@ -11,5 +12,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 		#endregion
 	}
 
+	/// <inheritdoc cref="IContentRoot" />
+	/// <inheritdoc cref="IContentNode{T}" />
 	public interface IContentRoot<out T> : IContentRoot, IContentNode<T> where T : IContent { }
 }

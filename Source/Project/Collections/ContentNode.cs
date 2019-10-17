@@ -9,6 +9,7 @@ using RegionOrebroLan.EPiServer.Collections.Extensions;
 
 namespace RegionOrebroLan.EPiServer.Collections
 {
+	/// <inheritdoc />
 	public class ContentNode<T> : IContentNode<T> where T : IContent
 	{
 		#region Fields
@@ -31,6 +32,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 
 		public ContentNode(ContentReference activeLink, IEnumerable<ContentReference> activeLinkAncestors, IContentLoader contentLoader, ILogger logger, IContentNode<T> parent, ITreeSettings settings, T value) : this(activeLink, activeLinkAncestors, contentLoader, logger, settings)
 		{
+			this.ContentLink = value?.ContentLink?.ToReferenceWithoutVersion();
 			this.Parent = parent ?? throw new ArgumentNullException(nameof(parent));
 
 			if(value == null)
@@ -91,11 +93,9 @@ namespace RegionOrebroLan.EPiServer.Collections
 			}
 		}
 
-		[SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code")]
-		protected internal virtual ContentReference ContentLink => this.Value?.ContentLink;
-
+		public virtual ContentReference ContentLink { get; }
 		protected internal virtual IContentLoader ContentLoader { get; }
-		protected internal virtual bool Expand => this.Settings.ExpandAll || this.Settings.Expanded.Contains(this.ContentLink);
+		protected internal virtual bool Expand => this.Settings.Expand(this.ContentLink);
 		public virtual bool Leaf => !this.ChildrenInternal.Any();
 		protected internal virtual ILogger Logger { get; }
 		IContentNode IContentNode.Parent => this.Parent;

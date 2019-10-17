@@ -20,6 +20,10 @@
 						<caption>Exclude root-container</caption>
 						<help></help>
 					</excluderoots>
+					<expandall>
+						<caption>Expand all levels</caption>
+						<help></help>
+					</expandall>
 					<heading>
 						<caption>Heading</caption>
 						<help></help>
@@ -32,10 +36,18 @@
 						<caption>Include root-container</caption>
 						<help></help>
 					</includeroots>
+					<indicateactivepage>
+						<caption>Indicate active page</caption>
+						<help></help>
+					</indicateactivepage>
 					<maximumnumberofitems>
 						<caption>Maximum number of items</caption>
 						<help></help>
 					</maximumnumberofitems>
+					<numberOfLevelsInitiallyExpandedOnClient>
+						<caption>Number of levels initially expanded in the user-interface</caption>
+						<help></help>
+					</numberOfLevelsInitiallyExpandedOnClient>
 					<pagination>
 						<caption>Pagination</caption>
 						<help></help>

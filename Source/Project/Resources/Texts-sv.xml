@@ -20,6 +20,10 @@
 						<caption>Exkludera root-behållare</caption>
 						<help></help>
 					</excluderoots>
+					<expandall>
+						<caption>Expandera alla nivåer</caption>
+						<help></help>
+					</expandall>
 					<heading>
 						<caption>Rubrik</caption>
 						<help></help>
@@ -32,10 +36,18 @@
 						<caption>Inkludera root-behållare</caption>
 						<help></help>
 					</includeroots>
+					<indicateactivepage>
+						<caption>Indikera aktiv sida</caption>
+						<help></help>
+					</indicateactivepage>
 					<maximumnumberofitems>
 						<caption>Maximalt antal poster</caption>
 						<help></help>
 					</maximumnumberofitems>
+					<numberOfLevelsInitiallyExpandedOnClient>
+						<caption>Antal nivåer initialt expanderade i gränssnittet</caption>
+						<help></help>
+					</numberOfLevelsInitiallyExpandedOnClient>
 					<pagination>
 						<caption>Paginering</caption>
 						<help></help>
