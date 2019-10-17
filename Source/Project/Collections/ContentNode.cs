@@ -62,8 +62,23 @@ namespace RegionOrebroLan.EPiServer.Collections
 				{
 					var children = new List<IContentNode<T>>();
 
-					if(this.Active || this.ActiveAncestor || this.Expand)
-						children.AddRange(this.ChildrenInternal.Select(child => new ContentNode<T>(this.ActiveLink, this.ActiveLinkAncestors, this.ContentLoader, this.Logger, this, this.Settings, child)));
+					var expandEventArgs = new ExpandEventArgs(this, this.Settings) {Expand = this.Expand};
+
+					this.Settings.OnExpandChildren(expandEventArgs);
+
+					if(expandEventArgs.Expand)
+					{
+						var expandingEventArgs = new ExpandingEventArgs(this, this.Settings);
+
+						this.Settings.OnExpandingChildren(expandingEventArgs);
+
+						if(!expandingEventArgs.Cancel)
+						{
+							children.AddRange(this.ChildrenInternal.Select(child => new ContentNode<T>(this.ActiveLink, this.ActiveLinkAncestors, this.ContentLoader, this.Logger, this, this.Settings, child)));
+
+							this.Settings.OnExpandedChildren(new ExpandedEventArgs(this, this.Settings));
+						}
+					}
 
 					this._children = children.ToArray();
 				}
@@ -95,7 +110,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 
 		public virtual ContentReference ContentLink { get; }
 		protected internal virtual IContentLoader ContentLoader { get; }
-		protected internal virtual bool Expand => this.Settings.Expand(this.ContentLink);
+		protected internal virtual bool Expand => this.Active || this.ActiveAncestor || this.Settings.Expand(this.ContentLink);
 		public virtual bool Leaf => !this.ChildrenInternal.Any();
 		protected internal virtual ILogger Logger { get; }
 		IContentNode IContentNode.Parent => this.Parent;

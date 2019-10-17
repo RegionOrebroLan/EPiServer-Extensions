@@ -12,7 +12,7 @@ namespace RegionOrebroLan.EPiServer.Collections.Extensions
 			if(settings == null)
 				throw new ArgumentNullException(nameof(settings));
 
-			return !ContentReference.IsNullOrEmpty(contentLink) && (settings.ExpandAll || settings.Expanded.Contains(contentLink)) && !settings.Collapsed.Contains(contentLink);
+			return !ContentReference.IsNullOrEmpty(contentLink) && (settings.PopulateEntireTree || settings.Expanded.Contains(contentLink)) && !settings.Collapsed.Contains(contentLink);
 		}
 
 		#endregion

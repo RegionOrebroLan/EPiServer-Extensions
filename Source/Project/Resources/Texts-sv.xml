@@ -20,10 +20,6 @@
 						<caption>Exkludera root-behållare</caption>
 						<help></help>
 					</excluderoots>
-					<expandall>
-						<caption>Expandera alla nivåer</caption>
-						<help></help>
-					</expandall>
 					<heading>
 						<caption>Rubrik</caption>
 						<help></help>
@@ -44,14 +40,18 @@
 						<caption>Maximalt antal poster</caption>
 						<help></help>
 					</maximumnumberofitems>
-					<numberOfLevelsInitiallyExpandedOnClient>
-						<caption>Antal nivåer initialt expanderade i gränssnittet</caption>
+					<numberOfLevelsInitiallyExpanded>
+						<caption>Antal nivåer expanderade initialt</caption>
 						<help></help>
-					</numberOfLevelsInitiallyExpandedOnClient>
+					</numberOfLevelsInitiallyExpanded>
 					<pagination>
 						<caption>Paginering</caption>
 						<help></help>
 					</pagination>
+					<populateEntireTree>
+						<caption>Populera alla nivåer</caption>
+						<help>Hela trädet populeras även om noder inte är expanderade.</help>
+					</populateEntireTree>
 					<roots>
 						<caption>Root-behållare</caption>
 						<help></help>

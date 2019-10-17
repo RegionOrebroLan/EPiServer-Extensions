@@ -10,12 +10,12 @@ namespace RegionOrebroLan.EPiServer.Models.Blocks.Internal
 		[Display(GroupName = SystemTabNames.Settings, Order = 20)]
 		public virtual bool ExcludeRoots { get; set; }
 
-		[Display(GroupName = SystemTabNames.Settings, Order = 40)]
-		public virtual bool ExpandAll { get; set; }
-
 		[Display(GroupName = SystemTabNames.Settings, Order = 50)]
 		[Range(0, int.MaxValue)]
-		public virtual int NumberOfLevelsInitiallyExpandedOnClient { get; set; }
+		public virtual int NumberOfLevelsInitiallyExpanded { get; set; }
+
+		[Display(GroupName = SystemTabNames.Settings, Order = 40)]
+		public virtual bool PopulateEntireTree { get; set; }
 
 		#endregion
 
@@ -25,7 +25,7 @@ namespace RegionOrebroLan.EPiServer.Models.Blocks.Internal
 		{
 			base.SetDefaultValues(contentType);
 
-			this.NumberOfLevelsInitiallyExpandedOnClient = 1;
+			this.NumberOfLevelsInitiallyExpanded = 1;
 		}
 
 		#endregion

@@ -20,10 +20,6 @@
 						<caption>Exclude root-container</caption>
 						<help></help>
 					</excluderoots>
-					<expandall>
-						<caption>Expand all levels</caption>
-						<help></help>
-					</expandall>
 					<heading>
 						<caption>Heading</caption>
 						<help></help>
@@ -44,14 +40,18 @@
 						<caption>Maximum number of items</caption>
 						<help></help>
 					</maximumnumberofitems>
-					<numberOfLevelsInitiallyExpandedOnClient>
-						<caption>Number of levels initially expanded in the user-interface</caption>
+					<numberOfLevelsInitiallyExpanded>
+						<caption>Number of levels initially expanded</caption>
 						<help></help>
-					</numberOfLevelsInitiallyExpandedOnClient>
+					</numberOfLevelsInitiallyExpanded>
 					<pagination>
 						<caption>Pagination</caption>
 						<help></help>
 					</pagination>
+					<populateEntireTree>
+						<caption>Populate all levels</caption>
+						<help>The whole tree is populated even if nodes are not expanded.</help>
+					</populateEntireTree>
 					<roots>
 						<caption>Root-containers</caption>
 						<help></help>
