@@ -62,7 +62,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 				{
 					var children = new List<IContentNode<T>>();
 
-					if(this.Active || this.ActiveAncestor || this.Level() == 0 || this.Expand)
+					if(this.Active || this.ActiveAncestor || this.Expand)
 						children.AddRange(this.ChildrenInternal.Select(child => new ContentNode<T>(this.ActiveLink, this.ActiveLinkAncestors, this.ContentLoader, this.Logger, this, this.Settings, child)));
 
 					this._children = children.ToArray();
