@@ -4,7 +4,7 @@ using EPiServer.DataAnnotations;
 
 namespace RegionOrebroLan.EPiServer.Models.Blocks.Internal
 {
-	public abstract class ContentCollectionBlock : BasicBlock
+	public abstract class ContentCollectionBlock : RoutableBlock
 	{
 		#region Properties
 
