@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EPiServer.Core;
 
 namespace RegionOrebroLan.EPiServer.Collections.Extensions
 {
@@ -7,7 +8,17 @@ namespace RegionOrebroLan.EPiServer.Collections.Extensions
 	{
 		#region Methods
 
-		public static IEnumerable<T> Ancestors<T>(this T node) where T : IContentNode
+		public static IEnumerable<IContentNode> Ancestors(this IContentNode node)
+		{
+			return node.AncestorsInternal();
+		}
+
+		public static IEnumerable<IContentNode<T>> Ancestors<T>(this IContentNode<T> node) where T : IContent
+		{
+			return node.AncestorsInternal();
+		}
+
+		private static IEnumerable<T> AncestorsInternal<T>(this T node) where T : IContentNode
 		{
 			if(node == null)
 				throw new ArgumentNullException(nameof(node));
@@ -20,7 +31,17 @@ namespace RegionOrebroLan.EPiServer.Collections.Extensions
 			}
 		}
 
-		public static IEnumerable<T> Descendants<T>(this T node) where T : IContentNode
+		public static IEnumerable<IContentNode> Descendants(this IContentNode node)
+		{
+			return node.DescendantsInternal();
+		}
+
+		public static IEnumerable<IContentNode<T>> Descendants<T>(this IContentNode<T> node) where T : IContent
+		{
+			return node.DescendantsInternal();
+		}
+
+		private static IEnumerable<T> DescendantsInternal<T>(this T node) where T : IContentNode
 		{
 			if(node == null)
 				throw new ArgumentNullException(nameof(node));
@@ -66,7 +87,17 @@ namespace RegionOrebroLan.EPiServer.Collections.Extensions
 			return level;
 		}
 
-		public static T Root<T>(this T node) where T : IContentNode
+		public static IContentNode Root(this IContentNode node)
+		{
+			return node.RootInternal();
+		}
+
+		public static IContentNode<T> Root<T>(this IContentNode<T> node) where T : IContent
+		{
+			return node.RootInternal();
+		}
+
+		private static T RootInternal<T>(this T node) where T : IContentNode
 		{
 			if(node == null)
 				throw new ArgumentNullException(nameof(node));
