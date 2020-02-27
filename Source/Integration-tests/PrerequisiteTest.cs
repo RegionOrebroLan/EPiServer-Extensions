@@ -24,26 +24,26 @@ namespace RegionOrebroLan.EPiServer.IntegrationTests
 
 			var contentDataDescendants = this.GetDescendants<IContentData>(contentLoader, ContentReference.RootPage).ToArray();
 
-			Assert.AreEqual(32, contentDataDescendants.Length);
+			Assert.AreEqual(51, contentDataDescendants.Length);
 
-			Assert.AreEqual(6, contentDataDescendants.OfType<ContentFolder>().Count());
+			Assert.AreEqual(10, contentDataDescendants.OfType<ContentFolder>().Count());
 			Assert.AreEqual(3, contentDataDescendants.OfType<EditorialBlock>().Count());
-			Assert.AreEqual(3, contentDataDescendants.OfType<ImageFile>().Count());
+			Assert.AreEqual(6, contentDataDescendants.OfType<ImageFile>().Count());
 			Assert.AreEqual(14, contentDataDescendants.OfType<InformationPage>().Count());
 			Assert.AreEqual(1, contentDataDescendants.Count(contentData => contentData.GetType() == typeof(PageData)));
-			Assert.AreEqual(4, contentDataDescendants.OfType<TextFile>().Count());
+			Assert.AreEqual(16, contentDataDescendants.OfType<TextFile>().Count());
 			Assert.AreEqual(1, contentDataDescendants.OfType<StartPage>().Count());
 
 			var contentDescendants = this.GetDescendants<IContentData>(contentLoader, ContentReference.RootPage).ToArray();
 
-			Assert.AreEqual(32, contentDescendants.Length);
+			Assert.AreEqual(51, contentDescendants.Length);
 
-			Assert.AreEqual(6, contentDescendants.OfType<ContentFolder>().Count());
+			Assert.AreEqual(10, contentDescendants.OfType<ContentFolder>().Count());
 			Assert.AreEqual(3, contentDescendants.OfType<EditorialBlock>().Count());
-			Assert.AreEqual(3, contentDescendants.OfType<ImageFile>().Count());
+			Assert.AreEqual(6, contentDescendants.OfType<ImageFile>().Count());
 			Assert.AreEqual(14, contentDescendants.OfType<InformationPage>().Count());
 			Assert.AreEqual(1, contentDescendants.Count(content => content.GetType() == typeof(PageData)));
-			Assert.AreEqual(4, contentDescendants.OfType<TextFile>().Count());
+			Assert.AreEqual(16, contentDescendants.OfType<TextFile>().Count());
 			Assert.AreEqual(1, contentDescendants.OfType<StartPage>().Count());
 		}
 

@@ -33,7 +33,7 @@ namespace RegionOrebroLan.EPiServer.IntegrationTests.Collections
 				Pagination = this.CreatePaginationSettings(null, PaginationModes.None, null)
 			};
 
-			Assert.AreEqual(32, this.GetListFactory().Create(ContentReference.RootPage, listSettings).Items.Count());
+			Assert.AreEqual(51, this.GetListFactory().Create(ContentReference.RootPage, listSettings).Items.Count());
 		}
 
 		[TestMethod]
