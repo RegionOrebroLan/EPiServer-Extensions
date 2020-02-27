@@ -58,16 +58,22 @@ namespace RegionOrebroLan.EPiServer.Collections
 			if(settings == null)
 				throw new ArgumentNullException(nameof(settings));
 
-			return this.Create(this.GetContents<T>(root, settings), settings);
+			return this.Create<T>(this.GetContents(root, settings), settings);
 		}
 
-		protected internal virtual IContentList<T> Create<T>(IEnumerable<T> contents, IListSettings settings) where T : IContent
+		protected internal virtual IContentList<T> Create<T>(IEnumerable<IContent> contentsYeah, IListSettings settings) where T : IContent
 		{
-			contents = contents.DuplicateHandled(settings).Filter(settings).Sort(settings).Take(settings?.MaximumNumberOfItems ?? int.MaxValue).ToArray();
+			var typedContents = (contentsYeah ?? Enumerable.Empty<IContent>())
+				.OfType<T>()
+				.DuplicateHandled(settings)
+				.Filter(settings)
+				.Sort(settings)
+				.Take(settings?.MaximumNumberOfItems ?? int.MaxValue)
+				.ToArray();
 
-			var pagination = this.PaginationFactory.Create(settings?.Pagination?.MaximumNumberOfDisplayedPages ?? this.DefaultMaximumNumberOfDisplayedPages, contents.Count(), this.GetPageIndexKey(settings), this.GetPageSize(settings), this.GetUrl());
+			var pagination = this.PaginationFactory.Create(settings?.Pagination?.MaximumNumberOfDisplayedPages ?? this.DefaultMaximumNumberOfDisplayedPages, typedContents.Length, this.GetPageIndexKey(settings), this.GetPageSize(settings), this.GetUrl());
 
-			return new ContentList<T>(contents.Skip(pagination.Skip).Take(pagination.Take), pagination);
+			return new ContentList<T>(typedContents.Skip(pagination.Skip).Take(pagination.Take), pagination);
 		}
 
 		public virtual IContentList<IContent> Create(IEnumerable<ContentReference> roots, IListSettings settings)
@@ -80,22 +86,22 @@ namespace RegionOrebroLan.EPiServer.Collections
 			if(settings == null)
 				throw new ArgumentNullException(nameof(settings));
 
-			return this.Create(this.GetContents<T>(roots, settings), settings);
+			return this.Create<T>(this.GetContents(roots, settings), settings);
 		}
 
-		protected internal virtual IEnumerable<T> GetContents<T>(ContentReference root, IListSettings settings) where T : IContent
+		protected internal virtual IEnumerable<IContent> GetContents(ContentReference root, IListSettings settings)
 		{
-			var contents = this.GetDescendants<T>(0, root, settings);
+			var contents = this.GetDescendants(0, root, settings);
 
-			if((settings?.IncludeRoot ?? false) && this.ContentLoader.TryGet<T>(root, out var rootContent))
+			if((settings?.IncludeRoot ?? false) && this.ContentLoader.TryGet<IContent>(root, out var rootContent))
 				contents = new[] {rootContent}.Concat(contents);
 
 			return contents;
 		}
 
-		protected internal virtual IEnumerable<T> GetContents<T>(IEnumerable<ContentReference> roots, IListSettings settings) where T : IContent
+		protected internal virtual IEnumerable<IContent> GetContents(IEnumerable<ContentReference> roots, IListSettings settings)
 		{
-			return this.DuplicateHandledRoots(roots, settings).SelectMany(root => this.GetContents<T>(root, settings));
+			return this.DuplicateHandledRoots(roots, settings).SelectMany(root => this.GetContents(root, settings));
 		}
 
 		protected internal virtual int GetDepth(IListSettings settings)
@@ -103,7 +109,7 @@ namespace RegionOrebroLan.EPiServer.Collections
 			return settings?.Depth ?? this.DefaultDepth;
 		}
 
-		protected internal virtual IEnumerable<T> GetDescendants<T>(int level, ContentReference parent, IListSettings settings) where T : IContent
+		protected internal virtual IEnumerable<IContent> GetDescendants(int level, ContentReference parent, IListSettings settings)
 		{
 			if(ContentReference.IsNullOrEmpty(parent))
 				yield break;
@@ -113,11 +119,11 @@ namespace RegionOrebroLan.EPiServer.Collections
 			if(level < 0 || level >= depth)
 				yield break;
 
-			foreach(var child in this.ContentLoader.GetChildren<T>(parent))
+			foreach(var child in this.ContentLoader.GetChildren<IContent>(parent))
 			{
 				yield return child;
 
-				foreach(var descendant in this.GetDescendants<T>(level + 1, child.ContentLink, settings))
+				foreach(var descendant in this.GetDescendants(level + 1, child.ContentLink, settings))
 				{
 					yield return descendant;
 				}

@@ -14,6 +14,19 @@ namespace RegionOrebroLan.EPiServer.IntegrationTests.Collections
 		#region Methods
 
 		[TestMethod]
+		public void Create_Generic_IfTheRootIsTheSiteBlockFolderAndDepthIsSetToMaximum_ShouldReturnAResultWithACorrectNumberOfItems()
+		{
+			var listSettings = new ListSettings
+			{
+				Depth = int.MaxValue
+			};
+
+			var items = this.GetListFactory().Create<IContentMedia>(ContentReference.SiteBlockFolder, listSettings).Items.ToArray();
+
+			Assert.AreEqual(22, items.Length);
+		}
+
+		[TestMethod]
 		public void Create_IfIncludeRootsIsSetToTrue_ShouldReturnAResultWithTheRootIncluded()
 		{
 			var listSettings = new ListSettings
