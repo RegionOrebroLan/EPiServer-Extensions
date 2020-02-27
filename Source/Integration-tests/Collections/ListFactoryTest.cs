@@ -51,6 +51,32 @@ namespace RegionOrebroLan.EPiServer.IntegrationTests.Collections
 		}
 
 		[TestMethod]
+		public void Create_IfTheRootIsTheSiteBlockFolder_ShouldReturnAResultWithACorrectNumberOfItems()
+		{
+			var listSettings = new ListSettings();
+
+			Assert.AreEqual(3, this.GetListFactory().Create(ContentReference.SiteBlockFolder, listSettings).Items.Count());
+		}
+
+		[TestMethod]
+		public void Create_IfTheRootIsTheSiteBlockFolderAndDepthIsSetToMaximum_ShouldReturnAResultWithACorrectNumberOfItems()
+		{
+			var listSettings = new ListSettings
+			{
+				Depth = int.MaxValue
+			};
+
+			var items = this.GetListFactory().Create(ContentReference.SiteBlockFolder, listSettings).Items.ToArray();
+
+			Assert.AreEqual(32, items.Length);
+			Assert.AreEqual(7, items.OfType<ContentFolder>().Count());
+			Assert.AreEqual(22, items.OfType<IContentMedia>().Count());
+			// ReSharper disable SuspiciousTypeConversion.Global
+			Assert.AreEqual(3, items.OfType<BlockData>().Count());
+			// ReSharper restore SuspiciousTypeConversion.Global
+		}
+
+		[TestMethod]
 		public void Create_IfTheRootsParameterContainsDuplicates_AndIgnoreDuplicatesIsFalse_ShouldReturnAResultWithoutDuplicates()
 		{
 			var listSettings = new ListSettings
