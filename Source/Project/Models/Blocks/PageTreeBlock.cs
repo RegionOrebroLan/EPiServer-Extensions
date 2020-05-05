@@ -12,8 +12,7 @@ using RegionOrebroLan.EPiServer.Models.Blocks.Internal;
 
 namespace RegionOrebroLan.EPiServer.Models.Blocks
 {
-	[ContentType(GUID = "88928c96-0f9b-498d-8f68-ad4405712c63", Order = 1004)]
-	public class PageTreeBlock : ContentTreeBlock
+	public abstract class PageTreeBlock : ContentTreeBlock
 	{
 		#region Properties
 
