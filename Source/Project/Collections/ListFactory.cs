@@ -61,9 +61,9 @@ namespace RegionOrebroLan.EPiServer.Collections
 			return this.Create<T>(this.GetContents(root, settings), settings);
 		}
 
-		protected internal virtual IContentList<T> Create<T>(IEnumerable<IContent> contentsYeah, IListSettings settings) where T : IContent
+		protected internal virtual IContentList<T> Create<T>(IEnumerable<IContent> contents, IListSettings settings) where T : IContent
 		{
-			var typedContents = (contentsYeah ?? Enumerable.Empty<IContent>())
+			var typedContents = (contents ?? Enumerable.Empty<IContent>())
 				.OfType<T>()
 				.DuplicateHandled(settings)
 				.Filter(settings)
