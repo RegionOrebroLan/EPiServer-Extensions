@@ -895,7 +895,24 @@
 		<Rule Id="CS8655" Action="Error" />
 		<Rule Id="CS8656" Action="Error" />
 		<Rule Id="CS8667" Action="Error" />
+		<Rule Id="CS8669" Action="Error" />
+		<Rule Id="CS8670" Action="Error" />
 		<Rule Id="CS8714" Action="Error" />
+		<Rule Id="CS8762" Action="Error" />
+		<Rule Id="CS8763" Action="Error" />
+		<Rule Id="CS8764" Action="Error" />
+		<Rule Id="CS8765" Action="Error" />
+		<Rule Id="CS8766" Action="Error" />
+		<Rule Id="CS8767" Action="Error" />
+		<Rule Id="CS8768" Action="Error" />
+		<Rule Id="CS8769" Action="Error" />
+		<Rule Id="CS8770" Action="Error" />
+		<Rule Id="CS8774" Action="Error" />
+		<Rule Id="CS8775" Action="Error" />
+		<Rule Id="CS8776" Action="Error" />
+		<Rule Id="CS8777" Action="Error" />
+		<Rule Id="CS8784" Action="Error" />
+		<Rule Id="CS8785" Action="Error" />
 	</Rules>
 	<Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
 		<Rule Id="IDE0001" Action="Error" />
@@ -911,6 +928,8 @@
 		<Rule Id="IDE0008WithoutSuggestion" Action="Error" />
 		<Rule Id="IDE0009" Action="Error" />
 		<Rule Id="IDE0009WithoutSuggestion" Action="Error" />
+		<Rule Id="IDE0010" Action="Error" />
+		<Rule Id="IDE0010WithoutSuggestion" Action="Error" />
 		<Rule Id="IDE0011" Action="Error" />
 		<Rule Id="IDE0011WithoutSuggestion" Action="Error" />
 		<Rule Id="IDE0016" Action="Error" />
@@ -948,6 +967,8 @@
 		<Rule Id="IDE0036WithoutSuggestion" Action="Error" />
 		<Rule Id="IDE0037" Action="Error" />
 		<Rule Id="IDE0037WithoutSuggestion" Action="Error" />
+		<Rule Id="IDE0038" Action="Error" />
+		<Rule Id="IDE0038WithoutSuggestion" Action="Error" />
 		<Rule Id="IDE0039" Action="Error" />
 		<Rule Id="IDE0039WithoutSuggestion" Action="Error" />
 		<Rule Id="IDE0040" Action="Error" />
@@ -993,6 +1014,16 @@
 		<Rule Id="IDE0065" Action="Error" />
 		<Rule Id="IDE0066" Action="Error" />
 		<Rule Id="IDE0066WithoutSuggestion" Action="Error" />
+		<Rule Id="IDE0071" Action="Error" />
+		<Rule Id="IDE0071WithoutSuggestion" Action="Error" />
+		<Rule Id="IDE0072" Action="Error" />
+		<Rule Id="IDE0072WithoutSuggestion" Action="Error" />
+		<Rule Id="IDE0073" Action="Error" />
+		<Rule Id="IDE0073WithoutSuggestion" Action="Error" />
+		<Rule Id="IDE0074" Action="Error" />
+		<Rule Id="IDE0074WithoutSuggestion" Action="Error" />
+		<Rule Id="IDE0075" Action="Error" />
+		<Rule Id="IDE0075WithoutSuggestion" Action="Error" />
 		<Rule Id="IDE1005" Action="Error" />
 		<Rule Id="IDE1005WithoutSuggestion" Action="Error" />
 		<Rule Id="IDE1006" Action="Error" />
@@ -1012,6 +1043,8 @@
 		<Rule Id="IDE0067" Action="Error" />
 		<Rule Id="IDE0068" Action="Error" />
 		<Rule Id="IDE0069" Action="Error" />
+		<Rule Id="IDE0070" Action="Error" />
+		<Rule Id="IDE0070WithoutSuggestion" Action="Error" />
 	</Rules>
 	<Rules AnalyzerId="Microsoft.CodeAnalysis.VersionCheckAnalyzer" RuleNamespace="Microsoft.CodeAnalysis.VersionCheckAnalyzer">
 		<Rule Id="CA9999" Action="Error" />
@@ -1025,6 +1058,7 @@
 		<Rule Id="CA1016" Action="Error" />
 		<Rule Id="CA1017" Action="Error" />
 		<Rule Id="CA1018" Action="Error" />
+		<Rule Id="CA1021" Action="Error" />
 		<Rule Id="CA1024" Action="Error" />
 		<Rule Id="CA1027" Action="Error" />
 		<Rule Id="CA1028" Action="Error" />
@@ -1051,6 +1085,7 @@
 		<Rule Id="CA1066" Action="Error" />
 		<Rule Id="CA1067" Action="Error" />
 		<Rule Id="CA1068" Action="Error" />
+		<Rule Id="CA1069" Action="Error" />
 		<Rule Id="CA1501" Action="Error" />
 		<Rule Id="CA1502" Action="Error" />
 		<Rule Id="CA1505" Action="Error" />
@@ -1078,10 +1113,12 @@
 		<Rule Id="CA1814" Action="Error" />
 		<Rule Id="CA1815" Action="Error" />
 		<Rule Id="CA1819" Action="Error" />
+		<Rule Id="CA1821" Action="Error" />
 		<Rule Id="CA1822" Action="Error" />
 		<Rule Id="CA1823" Action="Error" />
 		<Rule Id="CA1827" Action="Error" />
 		<Rule Id="CA2007" Action="Error" />
+		<Rule Id="CA2011" Action="Error" />
 		<Rule Id="CA2119" Action="Error" />
 		<Rule Id="CA2211" Action="Error" />
 		<Rule Id="CA2214" Action="Error" />
@@ -1137,10 +1174,14 @@
 		<Rule Id="CA2002" Action="Error" />
 		<Rule Id="CA2008" Action="Error" />
 		<Rule Id="CA2009" Action="Error" />
+		<Rule Id="CA2012" Action="Error" />
+		<Rule Id="CA2013" Action="Error" />
 		<Rule Id="CA2100" Action="Error" />
 		<Rule Id="CA2101" Action="Error" />
+		<Rule Id="CA2201" Action="Error" />
 		<Rule Id="CA2208" Action="Error" />
 		<Rule Id="CA2213" Action="Error" />
+		<Rule Id="CA2215" Action="Error" />
 		<Rule Id="CA2216" Action="Error" />
 		<Rule Id="CA2229" Action="Error" />
 		<Rule Id="CA2235" Action="Error" />
@@ -1221,6 +1262,9 @@
 		<Rule Id="CA5398" Action="Error" />
 		<Rule Id="CA5399" Action="Error" />
 		<Rule Id="CA5400" Action="Error" />
+		<Rule Id="CA5401" Action="Error" />
+		<Rule Id="CA5402" Action="Error" />
+		<Rule Id="CA5403" Action="Error" />
 		<Rule Id="CA9999" Action="Error" />
 	</Rules>
 	<Rules AnalyzerId="Microsoft.NetCore.CSharp.Analyzers" RuleNamespace="Microsoft.NetCore.CSharp.Analyzers">
