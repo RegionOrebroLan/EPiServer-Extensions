@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<AssemblyOriginatorKeyFile>$(SolutionDir)StrongName.Development.snk</AssemblyOriginatorKeyFile>
 		<DelaySign>false</DelaySign>
@@ -12,14 +12,9 @@
 		<PackageReference Include="EPiServer.Framework" Version="11.10.1" />
 		<PackageReference Include="EPiServer.Framework.AspNet" Version="11.10.1" />
 		<PackageReference Include="EPiServer.ServiceLocation.StructureMap" Version="2.0.2" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.3.0" />
-		<PackageReference Include="Moq" Version="4.13.0" />
-		<PackageReference Include="MSTest.TestAdapter" Version="2.0.0" />
-		<PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
 		<PackageReference Include="RegionOrebroLan.EPiServer.Initialization" Version="0.1.0-alpha" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="../../Source/Project/Project.csproj" />
 		<ProjectReference Include="../../Samples/Shared/Shared.csproj" />
 	</ItemGroup>
 	<ItemDefinitionGroup>
