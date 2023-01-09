@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<AssemblyOriginatorKeyFile>$(SolutionDir)StrongName.Development.snk</AssemblyOriginatorKeyFile>
+		<DelaySign>false</DelaySign>
+		<IsPackable>false</IsPackable>
+		<SignAssembly>true</SignAssembly>
+		<TargetFramework>net462</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="EPiServer.CMS.Core" Version="11.10.1" />
+		<PackageReference Include="RegionOrebroLan" Version="1.2.5-alpha" />
+		<PackageReference Include="System.IO.Abstractions" Version="6.0.21" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Source\Project\Project.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,30 +1,41 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-	<Import Project="Build\Build.props" />
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<AssemblyName>RegionOrebroLan.EPiServer</AssemblyName>
+		<AssemblyOriginatorKeyFile>$(SolutionDir)StrongName.snk</AssemblyOriginatorKeyFile>
+		<Authors>Region Örebro län</Authors>
+		<Company>$(Authors)</Company>
+		<DelaySign>false</DelaySign>
+		<Description>EPiServer additions and extensions.</Description>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/RegionOrebroLan/EPiServer-Extensions/</PackageProjectUrl>
+		<PackageReleaseNotes>https://github.com/RegionOrebroLan/EPiServer-Extensions/releases/</PackageReleaseNotes>
+		<PackageTags></PackageTags>
+		<RootNamespace>$(AssemblyName)</RootNamespace>
+		<SignAssembly>true</SignAssembly>
 		<TargetFramework>net462</TargetFramework>
+		<VersionPrefix>0.2.0</VersionPrefix>
+		<VersionSuffix>alpha</VersionSuffix>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="EPiServer.CMS.AspNet" Version="11.10.1" />
 		<PackageReference Include="EPiServer.CMS.Core" Version="11.10.1" />
 		<PackageReference Include="EPiServer.CMS.UI.Core" Version="11.10.0" />
-		<PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
 		<PackageReference Include="RegionOrebroLan.Web" Version="0.4.0-alpha" />
 	</ItemGroup>
 	<ItemGroup>
-		<None Remove="CodeAnalysis\Dictionary.xml" />
-		<AdditionalFiles Include="CodeAnalysis\Dictionary.xml" />
-		<AdditionalFiles Include="$(SolutionDir).Global\CodeAnalysis\Solution-dictionary.xml">
-			<Link>CodeAnalysis\Solution-dictionary.xml</Link>
-		</AdditionalFiles>
-		<Compile Include="$(SolutionDir).Global\CodeAnalysis\Solution-suppressions.cs">
-			<Link>CodeAnalysis\Solution-suppressions.cs</Link>
-		</Compile>
 		<None Remove="Resources\Texts-en.xml" />
 		<EmbeddedResource Include="Resources\Texts-en.xml" />
 		<None Remove="Resources\Texts-sv.xml" />
 		<EmbeddedResource Include="Resources\Texts-sv.xml" />
 	</ItemGroup>
-	<Import Project="Build\Build.targets" />
+	<Target Name="HandleAssemblyOriginatorKeyFile" BeforeTargets="BeforeBuild" Condition="$(SignAssembly) AND !Exists('$(AssemblyOriginatorKeyFile)')">
+		<PropertyGroup>
+			<_DevelopmentAssemblyOriginatorKeyFile>$(SolutionDir)StrongName.Development.snk</_DevelopmentAssemblyOriginatorKeyFile>
+		</PropertyGroup>
+		<Warning Text="The strong-name-key-file '$(AssemblyOriginatorKeyFile)' does not exist. The strong-name-key-file '$(_DevelopmentAssemblyOriginatorKeyFile)' is used instead." />
+		<PropertyGroup>
+			<AssemblyOriginatorKeyFile>$(_DevelopmentAssemblyOriginatorKeyFile)</AssemblyOriginatorKeyFile>
+		</PropertyGroup>
+	</Target>
 </Project>
