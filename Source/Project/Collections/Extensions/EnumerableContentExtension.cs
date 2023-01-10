@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using EPiServer.Core;
-using RegionOrebroLan.Collections.Generic;
+using RegionOrebroLan.EPiServer.Collections.Generic;
 using RegionOrebroLan.EPiServer.Filters;
 
 namespace RegionOrebroLan.EPiServer.Collections.Extensions

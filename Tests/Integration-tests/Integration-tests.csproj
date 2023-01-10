@@ -12,7 +12,7 @@
 		<PackageReference Include="EPiServer.Framework" Version="11.10.1" />
 		<PackageReference Include="EPiServer.Framework.AspNet" Version="11.10.1" />
 		<PackageReference Include="EPiServer.ServiceLocation.StructureMap" Version="2.0.2" />
-		<PackageReference Include="RegionOrebroLan.EPiServer.Initialization" Version="0.1.0-alpha" />
+		<PackageReference Include="RegionOrebroLan.EPiServer.Initialization" Version="0.2.0-alpha" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="../../Samples/Shared/Shared.csproj" />

@@ -7,9 +7,9 @@
 		<TargetFramework>net462</TargetFramework>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="EntityFramework" Version="6.2.0" />
 		<PackageReference Include="EPiServer.CMS.Core" Version="11.10.1" />
-		<PackageReference Include="RegionOrebroLan" Version="1.2.5-alpha" />
-		<PackageReference Include="System.IO.Abstractions" Version="6.0.21" />
+		<PackageReference Include="RegionOrebroLan.EPiServer.Data" Version="0.3.1-alpha" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Source\Project\Project.csproj" />

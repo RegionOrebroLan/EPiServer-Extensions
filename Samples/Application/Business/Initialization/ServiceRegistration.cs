@@ -1,8 +1,11 @@
-﻿using System;
+using System;
 using EPiServer.Configuration;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
+using RegionOrebroLan.EPiServer.Data;
+using RegionOrebroLan.Web.Paging;
+using Shared.Data.SqlClient;
 
 namespace MyCompany.MyWebApplication.Business.Initialization
 {
@@ -15,6 +18,10 @@ namespace MyCompany.MyWebApplication.Business.Initialization
 		{
 			if(context == null)
 				throw new ArgumentNullException(nameof(context));
+
+			context.Services.AddSingleton<IDatabaseCreator, SqlServerLocalDatabaseCreator>();
+			context.Services.AddSingleton<IPaginationFactory, PaginationFactory>();
+			context.Services.AddSingleton<IPaginationValidator, PaginationValidator>();
 
 			context.Services.AddSingleton(Settings.Instance);
 		}

@@ -1,9 +1,12 @@
-﻿using System;
+using System;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
 using Moq;
+using RegionOrebroLan.EPiServer.Data;
+using RegionOrebroLan.Web.Paging;
+using Shared.Data.SqlClient;
 
 namespace IntegrationTests.Helpers
 {
@@ -32,6 +35,10 @@ namespace IntegrationTests.Helpers
 		{
 			if(context == null)
 				throw new ArgumentNullException(nameof(context));
+
+			context.Services.AddSingleton<IDatabaseCreator, SqlServerLocalDatabaseCreator>();
+			context.Services.AddSingleton<IPaginationFactory, PaginationFactory>();
+			context.Services.AddSingleton<IPaginationValidator, PaginationValidator>();
 
 			context.Services.AddSingleton(_ =>
 			{

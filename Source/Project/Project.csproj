@@ -21,7 +21,7 @@
 		<PackageReference Include="EPiServer.CMS.AspNet" Version="11.10.1" />
 		<PackageReference Include="EPiServer.CMS.Core" Version="11.10.1" />
 		<PackageReference Include="EPiServer.CMS.UI.Core" Version="11.10.0" />
-		<PackageReference Include="RegionOrebroLan.Web" Version="0.4.0-alpha" />
+		<PackageReference Include="RegionOrebroLan.Web" Version="0.6.0-alpha" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Resources\Texts-en.xml" />
